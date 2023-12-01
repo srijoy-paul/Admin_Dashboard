@@ -6,8 +6,8 @@ import './App.css'
 
 function App() {
   let [users, setUsers] = useState([]);
-  // let [filteredUsers, setFilteredUsers] = useState([]);
-  // let [searchQuery, setSearchQuery] = useState('');
+  let [filteredUsers, setFilteredUsers] = useState([]);
+  let [searchQuery, setSearchQuery] = useState('');
   // let [currentPage, setCurrentPage] = useState(0);
   const usersPerPage = 10;
   let data;
@@ -20,21 +20,21 @@ function App() {
         });
         data = await response.json()
         setUsers(data);
-        // setFilteredUsers(data);
+        setFilteredUsers(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     })();
   }, []);
 
-  // useEffect(() => {
-  //   const filteredData = users.filter((user) => {
-  //     return Object.values(user).some((value) => {
-  //       return String(value).toLowerCase().includes(searchQuery.toLowerCase())
-  //     })
-  //   });
-  //   setFilteredUsers(filteredData);
-  // }, [searchQuery, users]);
+  useEffect(() => {
+    const filteredData = users.filter((user) => {
+      return Object.values(user).some((value) => {
+        return String(value).toLowerCase().includes(searchQuery.toLowerCase())
+      })
+    });
+    setFilteredUsers(filteredData);
+  }, [searchQuery, users]);
 
   // const handlePageChange = ({ selected }) => {
   //   setCurrentPage(selected);
@@ -48,7 +48,7 @@ function App() {
   return (
     <>
       <div id='parent-container'>
-        {/* <Search onSearch={setSearchQuery} /> */}
+        <Search onSearch={setSearchQuery} />
         {/* delete button */}
         {/* main table */}
         <table id='user-container' cellPadding={15} className='table'>
@@ -56,7 +56,7 @@ function App() {
             <UserItem values={{ heading: true }} />
           </thead>
           <tbody>
-            {users.map((user) => {
+            {filteredUsers.map((user) => {
               return (<UserItem key={user.id} values={{ heading: false, id: user.id, name: user.name, email: user.email, role: user.role }} />)
             })}
           </tbody>
