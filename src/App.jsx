@@ -8,7 +8,7 @@ function App() {
   let [users, setUsers] = useState([]);
   let [filteredUsers, setFilteredUsers] = useState([]);
   let [searchQuery, setSearchQuery] = useState('');
-  // let [currentPage, setCurrentPage] = useState(0);
+  let [currentPage, setCurrentPage] = useState(0);
   const usersPerPage = 10;
   let data;
 
@@ -36,14 +36,14 @@ function App() {
     setFilteredUsers(filteredData);
   }, [searchQuery, users]);
 
-  // const handlePageChange = ({ selected }) => {
-  //   setCurrentPage(selected);
-  // }
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected);
+  }
 
 
-  // const indexOfLastUser = (currentPage + 1) * usersPerPage;
-  // const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  // const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
+  const indexOfLastUser = (currentPage + 1) * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
 
   return (
     <>
@@ -56,12 +56,12 @@ function App() {
             <UserItem values={{ heading: true }} />
           </thead>
           <tbody>
-            {filteredUsers.map((user) => {
+            {currentUsers.map((user) => {
               return (<UserItem key={user.id} values={{ heading: false, id: user.id, name: user.name, email: user.email, role: user.role }} />)
             })}
           </tbody>
         </table>
-        {/* <footer>
+        <footer>
 
           <div id='selection-info'>0 of {filteredUsers.length} row(s) selected.</div>
 
@@ -94,7 +94,7 @@ function App() {
               </button>
             </div>
           </div>
-        </footer> */}
+        </footer>
       </div>
     </>);
 }
