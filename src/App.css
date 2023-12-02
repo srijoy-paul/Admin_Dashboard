@@ -70,11 +70,12 @@ tr td:last-child {
 }
 
 #selectDelete {
-  border: 2px solid rgba(128, 128, 128, 0.434);
-  cursor: pointer;
   background-color: transparent;
-  margin-top: -5px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(128, 128, 128, 0.313);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 footer {

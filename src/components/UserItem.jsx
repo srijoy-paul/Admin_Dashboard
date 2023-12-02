@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { usersContext, selectedUsersIdContext } from '../App';
+import { usersContext, selectedUsersIdContext, isSelectAllContext, currentUsersContext } from '../App';
 
 
 function UserItem({ values }) {
@@ -8,27 +8,39 @@ function UserItem({ values }) {
 
     let { users, setUsers } = useContext(usersContext);
     let { selectedUsersId, setSelectedUsersId } = useContext(selectedUsersIdContext);
+    let { isSelectAll, setIsSelectAll } = useContext(isSelectAllContext);
+    let currentUsers = useContext(currentUsersContext);
 
     function deleteAction(userId) {
         let updateUsers = users.filter(user => user.id !== userId);
         setUsers(updateUsers);
     }
 
+    const handleAllChange = () => {
+        let updateSelectedUsersId;
+
+        updateSelectedUsersId = isSelectAll ? [] : currentUsers.map(userId => userId);
+        setIsSelectAll(!isSelectAll);
+        setSelectedUsersId(updateSelectedUsersId);
+    };
+
     return (
         <>
             <tr id={id}>
                 {(() => {
                     if (heading) {
-                        return <>
-                            <th scope="col"><input type="checkbox" name="" id="all" /></th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Role</th>
-                            <th scope="col">Actions</th></>
+                        return (
+                            <>
+                                <th scope="col"><input type="checkbox" name="" id="all" onChange={handleAllChange} /></th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Actions</th>
+                            </>)
                     }
                     else {
                         return <>
-                            <td><input type="checkbox" name="" id={id} onChange={(e) => {
+                            <td><input checked={selectedUsersId.includes(id)} type="checkbox" name="" id={id} onChange={(e) => {
                                 if (e.target.checked) {
 
                                     setSelectedUsersId([...selectedUsersId, id]);
