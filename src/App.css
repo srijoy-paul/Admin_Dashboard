@@ -22,6 +22,22 @@ header #bulkDelete {
   cursor: pointer;
 }
 
+#search-container {
+  display: flex;
+  /* border: 2px solid blue; */
+}
+#search-container p {
+  margin-left: 5px;
+  cursor: pointer;
+}
+#search-container p svg {
+  width: 35px;
+  height: 35px;
+  border: 1px solid rgba(128, 128, 128, 0.329);
+  padding: 5px 5px;
+  border-radius: 3px;
+}
+
 #search-bar {
   border-radius: 5px;
   padding: 5px 10px;
@@ -41,6 +57,11 @@ header #bulkDelete {
 tr td input {
   border: none;
   background-color: transparent;
+}
+
+tr td input:focus {
+  border: none;
+  outline: none;
 }
 
 tr td:last-child {
@@ -76,16 +97,23 @@ tr td:last-child {
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
+  background-color: rgba(255, 0, 0, 0.605);
+  /* display: flex; */
+}
+#selectDelete svg {
+  width: 20px;
+  height: 20px;
+  color: white;
 }
 
 footer {
   display: flex;
   /* align-items: ; */
   /* justify-content: end; */
-  border: 5px solid red;
+  /* border: 5px solid red; */
 }
 #selection-info {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   display: flex;
   align-items: center;
   flex: 1;
@@ -93,39 +121,73 @@ footer {
 }
 #pages-info {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   flex: 1;
-  border: 2px solid blue;
+  /* border: 3px solid blue; */
+  white-space: nowrap;
+  gap: 3px;
 }
 #pages-info #pg-number {
-  flex: 0.4;
+  flex: 0.9;
+  /* width: 35%; */
+  display: flex;
+  align-items: center;
+  /* border: 2px solid magenta; */
+  height: 100%;
 }
 .selected {
   background-color: rgba(128, 128, 128, 0.434);
 }
 
 #pages-info #pagination-container {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   flex: 1;
+  /* width: 65%; */
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  /* height: 30px; */
   /* flex-direction: column; */
+}
+#pages-info #pagination-container ul {
+  padding: 0;
+  margin: 0;
+}
+#pages-info #pagination-container div {
+  /* border: 2px solid hotpink; */
+  display: flex;
+  align-items: start;
 }
 #pages-info #pagination-container button {
   background-color: transparent;
-  padding: 1px 7px;
+  padding: 3px 5px;
+  border: 1px solid gray;
+  display: flex;
+  border-radius: 3px;
 }
-#pages-info #pagination-container button svg {
-  color: black;
+#pages-info #pagination-container .first-page {
+  margin-right: 1.5px;
+}
+#pages-info #pagination-container .last-page {
+  margin-left: 1.5px;
+}
+#pages-info #pagination-container .first-page svg,
+#pages-info #pagination-container .last-page svg {
+  /* color: black; */
+  height: 20px;
+  width: 20px;
 }
 ul {
-  /* display: inline; */
-  border: 2px solid green;
+  /* border: 2px solid green; */
   list-style: none;
   justify-content: end;
   display: flex;
   gap: 5px;
 }
 ul li {
+  color: black;
   padding: 1px 7px;
   border: 1px solid gray;
+  border-radius: 3px;
 }
