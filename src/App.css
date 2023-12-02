@@ -10,9 +10,16 @@
   /* border: 2px solid blue; */
 }
 
-#user-container {
-  border: 1px solid rgba(128, 128, 128, 0.434);
-  border-radius: 2px;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header #bulkDelete {
+  border: 1px solid rgba(128, 128, 128, 0.313);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 #search-bar {
@@ -22,9 +29,52 @@
   margin-bottom: 12px;
 }
 
+#user-container {
+  border: 1px solid rgba(128, 128, 128, 0.434);
+  border-radius: 2px;
+}
+
+.userSelected {
+  background-color: rgba(128, 128, 128, 0.078);
+}
+
+tr td input {
+  border: none;
+  background-color: transparent;
+}
+
+tr td:last-child {
+  /* display: flex; */
+  /* gap: 5px; */
+  /* border: 2px solid blue; */
+}
+
+#action-btns {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
 #edit svg,
 #delete svg {
-  width: 20px;
+  width: 24px;
+  /* height: 23px; */
+  cursor: pointer;
+  border: 1px solid rgba(128, 128, 128, 0.434);
+  padding: 3px 3px;
+  background-color: white;
+  border-radius: 3px;
+}
+#delete svg {
+  color: red;
+}
+
+#selectDelete {
+  border: 2px solid rgba(128, 128, 128, 0.434);
+  cursor: pointer;
+  background-color: transparent;
+  margin-top: -5px;
+  margin-bottom: 8px;
 }
 
 footer {
@@ -48,6 +98,9 @@ footer {
 }
 #pages-info #pg-number {
   flex: 0.4;
+}
+.selected {
+  background-color: rgba(128, 128, 128, 0.434);
 }
 
 #pages-info #pagination-container {
