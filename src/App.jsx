@@ -35,6 +35,8 @@ function App() {
     })();
   }, []);
 
+  //Simultaneous search and filtering functionality to update dynamically while typing in the search bar.
+
   // useEffect(() => {
   //   const filteredData = users.filter((user) => {
   //     return Object.values(user).some((value) => {
@@ -44,8 +46,8 @@ function App() {
   //   setFilteredUsers(filteredData);
   // }, [searchQuery, users]);
 
-  const handleSearchClick = () => {
-    // Trigger search when the search button is clicked
+  const handleSearchClick = (e) => {
+    document.getElementsByClassName("search-icon")[0].classList.add("trigger-search");
     const filteredData = users.filter((user) => {
       return Object.values(user).some((value) => {
         return String(value).toLowerCase().includes(searchQuery.toLowerCase());
@@ -87,7 +89,7 @@ function App() {
                 <header>
                   <div id='search-container'>
                     <Search onSearch={setSearchQuery} />
-                    <p id='searchButton' onClick={handleSearchClick}>
+                    <p className='search-icon' onClick={handleSearchClick}>
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                       </svg>
@@ -139,6 +141,8 @@ function App() {
                           onPageChange={handlePageChange}
                           containerClassName={'pagination'}
                           activeClassName={'selected'}
+                          previousClassName={'previous-page'}
+                          nextClassName={'next-page'}
                         />
                       )}
                       <div>

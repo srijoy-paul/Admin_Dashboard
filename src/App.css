@@ -26,11 +26,11 @@ header #bulkDelete {
   display: flex;
   /* border: 2px solid blue; */
 }
-#search-container p {
+#search-container .search-icon {
   margin-left: 5px;
   cursor: pointer;
 }
-#search-container p svg {
+#search-container .search-icon svg {
   width: 35px;
   height: 35px;
   border: 1px solid rgba(128, 128, 128, 0.329);
@@ -43,6 +43,7 @@ header #bulkDelete {
   padding: 5px 10px;
   border: 1px solid rgba(128, 128, 128, 0.434);
   margin-bottom: 12px;
+  outline: none;
 }
 
 #user-container {
