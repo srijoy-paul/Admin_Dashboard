@@ -26,15 +26,6 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-<<<<<<< HEAD
-=======
-/* header #bulkDelete {
-  border: 1px solid rgba(128, 128, 128, 0.313);
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-} */
->>>>>>> 3a226add0f19f16241f739b66b013929ce3e0e32
 
 #search-container {
   display: flex;
@@ -67,10 +58,6 @@ header {
   border-radius: 5px;
   cursor: pointer;
   background-color: rgba(255, 0, 0, 0.605);
-<<<<<<< HEAD
-=======
-  /* display: flex; */
->>>>>>> 3a226add0f19f16241f739b66b013929ce3e0e32
 }
 #selectDelete svg {
   width: 20px;
@@ -136,10 +123,6 @@ footer {
   display: flex;
   align-items: center;
   justify-content: end;
-<<<<<<< HEAD
-=======
-  /* border: 2px solid magenta; */
->>>>>>> 3a226add0f19f16241f739b66b013929ce3e0e32
   height: 100%;
   padding: 0 4px;
 }
@@ -153,11 +136,6 @@ footer {
   justify-content: flex-end;
   align-items: center;
   gap: 5px;
-<<<<<<< HEAD
-=======
-  /* height: 30px; */
-  /* flex-direction: column; */
->>>>>>> 3a226add0f19f16241f739b66b013929ce3e0e32
   padding: 0 4px;
 }
 #pages-info #pagination-container ul {
@@ -201,17 +179,12 @@ ul li {
 }
 
 /* media-queries */
-<<<<<<< HEAD
-
-=======
->>>>>>> 3a226add0f19f16241f739b66b013929ce3e0e32
 @media screen and (max-width: 767px) {
   #root {
     width: 100vw;
     margin: 0 auto;
     padding: 0.5rem;
   }
-<<<<<<< HEAD
 
   #alert {
     position: fixed;
@@ -219,23 +192,12 @@ ul li {
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
-=======
-  header {
-    /* flex-direction: column;
-    align-items: flex-start; */
-  }
-
-  #search-container {
-    /* flex-direction: column; */
-    /* align-items: flex-start; */
->>>>>>> 3a226add0f19f16241f739b66b013929ce3e0e32
   }
 
   #search-bar {
     width: 100%;
   }
 
-<<<<<<< HEAD
   #selectDelete {
     padding: 6px 8px;
   }
@@ -247,14 +209,11 @@ ul li {
     align-items: center;
   }
 
-=======
->>>>>>> 3a226add0f19f16241f739b66b013929ce3e0e32
   #user-container {
     overflow-x: auto;
   }
 
   tr td {
-<<<<<<< HEAD
     overflow: auto;
     max-width: 150px;
   }
@@ -264,17 +223,10 @@ ul li {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-=======
-    overflow-x: scroll;
-  }
-  tr td input {
-    width: 100%;
->>>>>>> 3a226add0f19f16241f739b66b013929ce3e0e32
   }
 
   footer {
     flex-direction: column;
-<<<<<<< HEAD
     gap: 5px;
   }
 
@@ -285,38 +237,16 @@ ul li {
   #selection-info,
   #pages-info {
     width: 100%;
-=======
-    /* border: 2px solid blue; */
-    gap: 5px;
-  }
-
-  #selection-info,
-  #pages-info {
-    width: 100%;
-    /* border: 2px solid magenta; */
->>>>>>> 3a226add0f19f16241f739b66b013929ce3e0e32
   }
 
   #pages-info {
     display: flex;
-<<<<<<< HEAD
     align-items: center;
     gap: 0.5px;
   }
 
   #pages-info #pg-number {
     justify-content: start;
-=======
-    /* justify-content: end; */
-    align-items: center;
-    gap: 0.5px;
-    /* border: 4px solid fuchsia; */
-  }
-
-  #pages-info #pg-number {
-    text-align: center;
-    /* border: 2px solid firebrick; */
->>>>>>> 3a226add0f19f16241f739b66b013929ce3e0e32
   }
   #pagination-container {
     justify-content: center;
@@ -326,21 +256,10 @@ ul li {
     justify-content: center;
   }
 
-<<<<<<< HEAD
   #pages-info #pg-number {
     flex: 0.9;
     display: flex;
     align-items: end;
-=======
-  /* add */
-  #pages-info #pg-number {
-    flex: 0.9;
-    /* width: 35%; */
-    display: flex;
-    align-items: end;
-    /* border: 2px solid magenta; */
-
->>>>>>> 3a226add0f19f16241f739b66b013929ce3e0e32
     padding: 0 2px;
   }
   .selected {
@@ -348,10 +267,6 @@ ul li {
   }
 
   #pages-info #pagination-container {
-<<<<<<< HEAD
-=======
-    /* border: 2px solid blue; */
->>>>>>> 3a226add0f19f16241f739b66b013929ce3e0e32
     flex: 1;
     gap: 2px;
     padding: 0 4px;
@@ -361,10 +276,6 @@ ul li {
     margin: 0;
   }
   #pages-info #pagination-container div {
-<<<<<<< HEAD
-=======
-    /* border: 2px solid hotpink; */
->>>>>>> 3a226add0f19f16241f739b66b013929ce3e0e32
     display: flex;
     align-items: start;
   }
@@ -388,10 +299,6 @@ ul li {
     width: 20px;
   }
   ul {
-<<<<<<< HEAD
-=======
-    /* border: 2px solid green; */
->>>>>>> 3a226add0f19f16241f739b66b013929ce3e0e32
     list-style: none;
     justify-content: end;
     display: flex;

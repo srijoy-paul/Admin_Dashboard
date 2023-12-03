@@ -36,10 +36,6 @@ const UserItem = ({ values }) => {
 
     const handleSaveClick = () => {
         let updateUsers = users.map(user => (user.id === id) ? { ...user, ...editValues } : user);
-<<<<<<< HEAD:src/components/Table/UserItem.jsx
-=======
-        // console.log("after updating", updateUsers);
->>>>>>> 3a226add0f19f16241f739b66b013929ce3e0e32:src/components/UserItem.jsx
         setUsers(updateUsers);
         setIsEditing(false);
     };
