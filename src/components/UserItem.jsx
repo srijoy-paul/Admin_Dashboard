@@ -16,6 +16,7 @@ function UserItem({ values }) {
 
     function deleteAction(userId) {
         let updateUsers = users.filter(user => user.id !== userId);
+        // console.log("exec", updateUsers)
         setUsers(updateUsers);
     }
 
@@ -32,7 +33,7 @@ function UserItem({ values }) {
     }
 
     const handleSaveClick = () => {
-        const updateUsers = users.map(user => (user.id === id) ? { ...user, ...editValues } : user);
+        let updateUsers = users.map(user => (user.id === id) ? { ...user, ...editValues } : user);
         // console.log("after updating", updateUsers);
         setUsers(updateUsers);
         setIsEditing(false);

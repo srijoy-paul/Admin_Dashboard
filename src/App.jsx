@@ -35,16 +35,16 @@ function App() {
     })();
   }, []);
 
-  //Simultaneous search and filtering functionality to update dynamically while typing in the search bar.
+  // Simultaneous search and filtering functionality to update dynamically while typing in the search bar.
 
-  // useEffect(() => {
-  //   const filteredData = users.filter((user) => {
-  //     return Object.values(user).some((value) => {
-  //       return String(value).toLowerCase().includes(searchQuery.toLowerCase())
-  //     })
-  //   });
-  //   setFilteredUsers(filteredData);
-  // }, [searchQuery, users]);
+  useEffect(() => {
+    const filteredData = users.filter((user) => {
+      return Object.values(user).some((value) => {
+        return String(value).toLowerCase().includes(searchQuery.toLowerCase())
+      })
+    });
+    setFilteredUsers(filteredData);
+  }, [users]);
 
   const handleSearchClick = (e) => {
     document.getElementsByClassName("search-icon")[0].classList.add("trigger-search");
@@ -53,7 +53,10 @@ function App() {
         return String(value).toLowerCase().includes(searchQuery.toLowerCase());
       });
     });
-    setFilteredUsers(filteredData);
+    if (filteredData.length === 0) { alert(`No Users found with name ${searchQuery}`) }
+    else {
+      setFilteredUsers(filteredData)
+    }
   };
 
   const handlePageChange = ({ selected }) => {
@@ -119,7 +122,7 @@ function App() {
                   <div id='selection-info'>{selectedUsersId.length} of {filteredUsers.length} row(s) selected.</div>
 
                   <div id='pages-info'>
-                    <p id='pg-number'>Page {currentPage + 1} of {Math.ceil(filteredUsers.length / usersPerPage)}</p>
+                    <div id='pg-number'>Page {currentPage + 1} of {Math.ceil(filteredUsers.length / usersPerPage)}</div>
 
                     <div id='pagination-container'>
                       <div>
