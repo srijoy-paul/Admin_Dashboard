@@ -1,18 +1,20 @@
-import React, { useContext, useState } from 'react';
-import { usersContext, selectedUsersIdContext, isSelectAllContext, currentUsersContext } from '../App';
+import { useContext, useState } from 'react';
+import { usersContext, selectedUsersIdContext, isSelectAllContext, currentUsersIdContext, showAlertContext } from '../../App';
 
 
-function UserItem({ values }) {
-    const { heading, id, name, email, role } = values;
+const UserItem = ({ values }) => {
+    const { tableHeading, id, name, email, role } = values;
 
     const [isEditing, setIsEditing] = useState(false);
     const [editValues, setEditValues] = useState({ name, email, role });
 
 
+
     let { users, setUsers } = useContext(usersContext);
     let { selectedUsersId, setSelectedUsersId } = useContext(selectedUsersIdContext);
     let { isSelectAll, setIsSelectAll } = useContext(isSelectAllContext);
-    let currentUsers = useContext(currentUsersContext);
+    let currentUsers = useContext(currentUsersIdContext);
+    const setShowAlert = useContext(showAlertContext).setShowAlert;
 
     function deleteAction(userId) {
         let updateUsers = users.filter(user => user.id !== userId);
@@ -32,16 +34,28 @@ function UserItem({ values }) {
     }
 
     const handleSaveClick = () => {
-        const updateUsers = users.map(user => (user.id === id) ? { ...user, ...editValues } : user);
-        // console.log("after updating", updateUsers);
+        let updateUsers = users.map(user => (user.id === id) ? { ...user, ...editValues } : user);
         setUsers(updateUsers);
         setIsEditing(false);
     };
 
     const handleEdit = () => {
-        if (isEditing) handleSaveClick()
+        if (isEditing) {
+            document.getElementById("edit").classList.add("edit");
+            document.getElementById("edit").classList.remove("save");
 
-        else setIsEditing(!isEditing)
+            handleSaveClick();
+        } else {
+            setIsEditing(!isEditing)
+            setShowAlert(true);
+
+            setTimeout(() => {
+                setShowAlert(false);
+            }, 3000);
+
+            document.getElementById("edit").classList.remove("edit");
+            document.getElementById("edit").classList.add("save");
+        }
     }
 
 
@@ -49,7 +63,7 @@ function UserItem({ values }) {
         <>
             <tr id={id}>
                 {(() => {
-                    if (heading) {
+                    if (tableHeading) {
                         return (
                             <>
                                 <th scope="col"><input type="checkbox" name="" id="all" onChange={handleAllChange} /></th>
@@ -63,28 +77,27 @@ function UserItem({ values }) {
                         return <>
                             <td><input checked={selectedUsersId.includes(id)} type="checkbox" name="" id={id} onChange={(e) => {
                                 if (e.target.checked) {
-
                                     setSelectedUsersId([...selectedUsersId, id]);
-                                    // console.log(selectedUsersId)
+
                                     document.getElementById(id).classList.add("userSelected");
                                 }
                                 else {
                                     setSelectedUsersId((preValue) =>
-                                        preValue.filter(value => value != id)
+                                        preValue.filter(value => value !== id)
                                     )
                                     document.getElementById(id).classList.remove("userSelected");
                                 }
                             }} /></td>
 
-                            <td><input type="text" name="name" id="" value={editValues.name} readOnly={!isEditing} onChange={(e) => { handleUpdate(e, "name") }} className={id} /></td>
+                            <td><input type="text" name="name" id="name" value={editValues.name} readOnly={!isEditing} onChange={(e) => { handleUpdate(e, "name") }} className={id} /></td>
 
-                            <td><input type="text" name="email" id="" value={editValues.email} readOnly={!isEditing} onChange={(e) => { handleUpdate(e, "email") }} className={id} /></td>
+                            <td><input type="text" name="email" id="email" value={editValues.email} readOnly={!isEditing} onChange={(e) => { handleUpdate(e, "email") }} className={id} /></td>
 
-                            <td><input type="text" name="role" id="" value={editValues.role} readOnly={!isEditing} onChange={(e) => { handleUpdate(e, "role") }} className={id} /></td>
+                            <td><input type="text" name="role" id="role" value={editValues.role} readOnly={!isEditing} onChange={(e) => { handleUpdate(e, "role") }} className={id} /></td>
 
                             <td>
                                 <div id='action-btns'>
-                                    <div id="edit" onClick={handleEdit}>
+                                    <div id="edit" className="edit" onClick={handleEdit}>
                                         {isEditing ?
                                             (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15M9 12l3 3m0 0l3-3m-3 3V2.25" />

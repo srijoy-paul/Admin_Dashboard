@@ -1,13 +1,24 @@
+@import "normalize.css";
 @import "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 #root {
   max-width: 1600px;
   margin: 0 auto;
   padding: 2rem;
-  /* text-align: center; */
 }
-#parent-container {
-  /* border: 2px solid blue; */
+
+#alert {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-20%);
+  z-index: 1;
+  width: 65%;
 }
 
 header {
@@ -15,16 +26,9 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-header #bulkDelete {
-  border: 1px solid rgba(128, 128, 128, 0.313);
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
 
 #search-container {
   display: flex;
-  /* border: 2px solid blue; */
 }
 #search-container .search-icon {
   margin-left: 5px;
@@ -32,10 +36,10 @@ header #bulkDelete {
 }
 #search-container .search-icon svg {
   width: 35px;
-  height: 35px;
+  height: 36px;
   border: 1px solid rgba(128, 128, 128, 0.329);
   padding: 5px 5px;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 #search-bar {
@@ -44,6 +48,21 @@ header #bulkDelete {
   border: 1px solid rgba(128, 128, 128, 0.434);
   margin-bottom: 12px;
   outline: none;
+}
+
+#selectDelete {
+  background-color: transparent;
+  margin-bottom: 12px;
+  border: 1px solid rgba(128, 128, 128, 0.313);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(255, 0, 0, 0.605);
+}
+#selectDelete svg {
+  width: 20px;
+  height: 20px;
+  color: white;
 }
 
 #user-container {
@@ -65,12 +84,6 @@ tr td input:focus {
   outline: none;
 }
 
-tr td:last-child {
-  /* display: flex; */
-  /* gap: 5px; */
-  /* border: 2px solid blue; */
-}
-
 #action-btns {
   display: flex;
   justify-content: center;
@@ -80,7 +93,6 @@ tr td:last-child {
 #edit svg,
 #delete svg {
   width: 24px;
-  /* height: 23px; */
   cursor: pointer;
   border: 1px solid rgba(128, 128, 128, 0.434);
   padding: 3px 3px;
@@ -91,30 +103,10 @@ tr td:last-child {
   color: red;
 }
 
-#selectDelete {
-  background-color: transparent;
-  margin-bottom: 12px;
-  border: 1px solid rgba(128, 128, 128, 0.313);
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: rgba(255, 0, 0, 0.605);
-  /* display: flex; */
-}
-#selectDelete svg {
-  width: 20px;
-  height: 20px;
-  color: white;
-}
-
 footer {
   display: flex;
-  /* align-items: ; */
-  /* justify-content: end; */
-  /* border: 5px solid red; */
 }
 #selection-info {
-  /* border: 2px solid blue; */
   display: flex;
   align-items: center;
   flex: 1;
@@ -122,41 +114,35 @@ footer {
 }
 #pages-info {
   display: flex;
-  /* align-items: center; */
   flex: 1;
-  /* border: 3px solid blue; */
   white-space: nowrap;
-  gap: 3px;
+  gap: 5px;
 }
 #pages-info #pg-number {
   flex: 0.9;
-  /* width: 35%; */
   display: flex;
   align-items: center;
-  /* border: 2px solid magenta; */
+  justify-content: end;
   height: 100%;
+  padding: 0 4px;
 }
 .selected {
   background-color: rgba(128, 128, 128, 0.434);
 }
 
 #pages-info #pagination-container {
-  /* border: 2px solid blue; */
   flex: 1;
-  /* width: 65%; */
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 5px;
-  /* height: 30px; */
-  /* flex-direction: column; */
+  padding: 0 4px;
 }
 #pages-info #pagination-container ul {
   padding: 0;
   margin: 0;
 }
 #pages-info #pagination-container div {
-  /* border: 2px solid hotpink; */
   display: flex;
   align-items: start;
 }
@@ -180,7 +166,6 @@ footer {
   width: 20px;
 }
 ul {
-  /* border: 2px solid green; */
   list-style: none;
   justify-content: end;
   display: flex;
@@ -191,4 +176,139 @@ ul li {
   padding: 1px 7px;
   border: 1px solid gray;
   border-radius: 3px;
+}
+
+/* media-queries */
+
+@media screen and (max-width: 767px) {
+  #root {
+    width: 100vw;
+    margin: 0 auto;
+    padding: 0.5rem;
+  }
+
+  #alert {
+    position: fixed;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  #search-bar {
+    width: 100%;
+  }
+
+  #selectDelete {
+    padding: 6px 8px;
+  }
+  #selectDelete svg {
+    width: 19px;
+    height: 19px;
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+
+  #user-container {
+    overflow-x: auto;
+  }
+
+  tr td {
+    overflow: auto;
+    max-width: 150px;
+  }
+  tr td input {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  #selection-info {
+    justify-content: center;
+  }
+
+  #selection-info,
+  #pages-info {
+    width: 100%;
+  }
+
+  #pages-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5px;
+  }
+
+  #pages-info #pg-number {
+    justify-content: start;
+  }
+  #pagination-container {
+    justify-content: center;
+  }
+
+  #pages-info #pagination-container ul {
+    justify-content: center;
+  }
+
+  #pages-info #pg-number {
+    flex: 0.9;
+    display: flex;
+    align-items: end;
+    padding: 0 2px;
+  }
+  .selected {
+    background-color: rgba(128, 128, 128, 0.434);
+  }
+
+  #pages-info #pagination-container {
+    flex: 1;
+    gap: 2px;
+    padding: 0 4px;
+  }
+  #pages-info #pagination-container ul {
+    padding: 0;
+    margin: 0;
+  }
+  #pages-info #pagination-container div {
+    display: flex;
+    align-items: start;
+  }
+  #pages-info #pagination-container button {
+    background-color: transparent;
+    padding: 3px 5px;
+    border: 1px solid gray;
+    display: flex;
+    border-radius: 3px;
+  }
+  #pages-info #pagination-container .first-page {
+    margin-right: 0px;
+  }
+  #pages-info #pagination-container .last-page {
+    margin-left: 1.5px;
+  }
+  #pages-info #pagination-container .first-page svg,
+  #pages-info #pagination-container .last-page svg {
+    /* color: black; */
+    height: 20px;
+    width: 20px;
+  }
+  ul {
+    list-style: none;
+    justify-content: end;
+    display: flex;
+    gap: 2px;
+  }
+  ul li {
+    color: black;
+    padding: 1px 7px;
+    border: 1px solid gray;
+    border-radius: 3px;
+  }
 }
