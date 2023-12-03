@@ -1,8 +1,8 @@
 
-import '@testing-library/jest-dom/extend-expect';
+// import '@testing-library/jest-dom/extend-expect';
 
-global.fetch = jest.fn(() =>
-    Promise.resolve({
-        json: () => Promise.resolve([]),
-    })
-);
+// global.fetch = jest.fn(() =>
+//     Promise.resolve({
+//         json: () => Promise.resolve([]),
+//     })
+// );
